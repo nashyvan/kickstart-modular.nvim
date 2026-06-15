@@ -2,10 +2,10 @@ local function gh(repo) return 'https://github.com/' .. repo end
 
 local options
 
-if vim.api.nvim_exec('echo argc()', true) == '0' then
+if vim.fn.argc() == 0 then
   local function split(s)
     local t = {}
-    local max_line_length = vim.api.nvim_get_option 'columns'
+    local max_line_length = vim.o.columns
     local longest = 0
     for far in s:gmatch '[^\r\n]+' do
       local line
@@ -89,7 +89,7 @@ if vim.api.nvim_exec('echo argc()', true) == '0' then
     padding_between  = 3,
   }
 
-  local left = vim.api.nvim_get_option 'lines' - (ol.length_buttons + ol.message + ol.padding_between + ol.icon + ol.neovim_lines)
+  local left = vim.o.lines - (ol.length_buttons + ol.message + ol.padding_between + ol.icon + ol.neovim_lines)
 
   if left >= 0 then
     local top = math.floor(left / 2)

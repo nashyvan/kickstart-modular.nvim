@@ -1,6 +1,7 @@
 local function gh(repo) return 'https://github.com/' .. repo end
 
 vim.pack.add { gh 'nvim-lualine/lualine.nvim' }
+vim.pack.add { gh 'AndreM222/copilot-lualine' }
 
 require('lualine').setup {
   options = {

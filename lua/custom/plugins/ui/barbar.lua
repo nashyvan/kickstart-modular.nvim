@@ -1,20 +1,11 @@
-return {
-  'romgrk/barbar.nvim',
-  dependencies = {
-    'nvim-tree/nvim-web-devicons', -- для иконок
-    'lewis6991/gitsigns.nvim'      -- необязательно, для интеграции с Git
-  },
-  config = function()
-    require('barbar').setup {
-      auto_hide = false,
-      tabpages = true,
-      clickable = true,
-      -- icons = {
-      --   buffer_index = false,
-      --   filetype = { enabled = false },
-      --   separator = { left = '▎', right = '' },
-      -- },
-      icons = { buffer_index = false, },
-    }
-  end,
-}
+-- Disabled: not loaded from custom/plugins/init.lua (bufferline is used instead)
+-- To enable: add `require 'custom.plugins.ui.barbar'` to custom/plugins/init.lua
+
+-- local function gh(repo) return 'https://github.com/' .. repo end
+-- vim.pack.add { gh 'romgrk/barbar.nvim' }
+-- require('barbar').setup {
+--   auto_hide = false,
+--   tabpages = true,
+--   clickable = true,
+--   icons = { buffer_index = false },
+-- }
