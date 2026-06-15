@@ -5,4 +5,8 @@ require('transparent').setup {
   extra_groups = {},
   exclude_groups = {},
 }
-vim.cmd 'TransparentEnable'
+-- TransparentEnable is defined in plugin/ which loads after init.lua; defer to VimEnter
+vim.api.nvim_create_autocmd('VimEnter', {
+  once = true,
+  callback = function() vim.cmd 'TransparentEnable' end,
+})
