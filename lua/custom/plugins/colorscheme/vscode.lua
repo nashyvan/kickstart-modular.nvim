@@ -1,23 +1,11 @@
-return {
-  'Mofiqul/vscode.nvim',
-  lazy = false,
-  priority = 1000,
-  opts = {
-    -- Alternatively set style in setup
-    -- style = 'light'
+local function gh(repo) return 'https://github.com/' .. repo end
 
-    -- Enable transparent background
-    transparent = false,
+vim.pack.add { gh 'Mofiqul/vscode.nvim' }
 
-    -- Enable italic comment
-    italic_comments = true,
-
-    -- Disable nvim-tree background color
-    disable_nvimtree_bg = true,
-  },
-  config = function(_, opts)
-    local code = require 'vscode'
-    code.setup(opts)
-    code.load()
-  end,
+local code = require 'vscode'
+code.setup {
+  transparent = false,
+  italic_comments = true,
+  disable_nvimtree_bg = true,
 }
+code.load()

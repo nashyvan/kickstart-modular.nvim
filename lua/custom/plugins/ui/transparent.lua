@@ -1,12 +1,8 @@
-return {
-  'xiyaowong/transparent.nvim',
-  lazy = false,
-  opts = { -- Optional, you don't have to run setup.
-    extra_groups = {}, -- table: additional groups that should be cleared
-    exclude_groups = {}, -- table: groups you don't want to clear
-  },
-  config = function(_, opts)
-    require('transparent').setup(opts)
-    vim.cmd 'TransparentEnable'
-  end,
+local function gh(repo) return 'https://github.com/' .. repo end
+
+vim.pack.add { gh 'xiyaowong/transparent.nvim' }
+require('transparent').setup {
+  extra_groups = {},
+  exclude_groups = {},
 }
+vim.cmd 'TransparentEnable'

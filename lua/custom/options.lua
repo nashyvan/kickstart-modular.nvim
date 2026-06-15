@@ -1,3 +1,5 @@
+vim.g.have_nerd_font = true
+
 vim.o.relativenumber = true
 
 -- Auto-install extra Treesitter parsers for web development on startup.

@@ -1,14 +1,18 @@
 # Divergence from upstream
 
-Two files differ from `dam9000/kickstart-modular.nvim`:
+Three files differ from `dam9000/kickstart-modular.nvim`:
 
 | File | Change |
 |------|--------|
-| `init.lua` | `require 'custom'` appended at the end |
-| `lua/lazy-plugins.lua` | `{ import = 'custom.plugins' }` uncommented |
+| `init.lua` | `require 'custom'` added before `require 'pack'` (must run before plugins so `vim.g.have_nerd_font` is set in time for mini.lua) |
+| `lua/plugins.lua` | `require 'custom.plugins'` uncommented at the bottom |
+| `lua/custom/plugins/init.lua` | Explicit ordered require list instead of upstream's flat-dir auto-loader (our plugins live in `ui/`, `ai/`, `colorscheme/` subdirs) |
 
-When merging upstream, keep these two lines — everything else can be accepted from upstream as-is.
+When merging upstream:
+- Keep the `require 'custom'` line in `init.lua` (before `require 'pack'`)
+- Keep `require 'custom.plugins'` uncommented in `lua/plugins.lua`
+- Revert `lua/custom/plugins/init.lua` if upstream overwrites it (or re-add the explicit requires)
 
 ---
 
-`lua/custom/plugins/init.lua` is also edited, but upstream [promises](https://github.com/dam9000/kickstart-modular.nvim) to never touch the `lua/custom/` directory — so no conflicts there, ever.
+`lua/custom/` is entirely yours — upstream promises never to touch it.

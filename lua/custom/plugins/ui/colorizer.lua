@@ -1,10 +1,5 @@
-return {
-  'catgoose/nvim-colorizer.lua',
-  lazy = false,
-  init = function()
-    vim.cmd [[set termguicolors]]
-  end,
-  config = function()
-    require('colorizer').setup()
-  end,
-}
+local function gh(repo) return 'https://github.com/' .. repo end
+
+vim.cmd [[set termguicolors]]
+vim.pack.add { gh 'catgoose/nvim-colorizer.lua' }
+require('colorizer').setup()
