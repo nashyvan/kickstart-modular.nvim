@@ -40,6 +40,11 @@ vim.api.nvim_create_autocmd('PackChanged', {
     local kind = ev.data.kind
     if kind ~= 'install' and kind ~= 'update' then return end
 
+    if name == 'blink.cmp' then
+      if vim.fn.executable 'cargo' == 1 then run_build(name, { 'cargo', 'build', '--release' }, ev.data.path) end
+      return
+    end
+
     if name == 'telescope-fzf-native.nvim' and vim.fn.executable 'make' == 1 then
       run_build(name, { 'make' }, ev.data.path)
       return

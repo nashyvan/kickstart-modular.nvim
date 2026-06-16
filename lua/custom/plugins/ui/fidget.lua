@@ -4,6 +4,6 @@ local function gh(repo) return 'https://github.com/' .. repo end
 vim.pack.add { gh 'j-hui/fidget.nvim' }
 require('fidget').setup {
   notification = {
-    window = { winblend = 0 },
+    window = { winblend = 0, avoid = { 'NvimTree' } },
   },
 }
