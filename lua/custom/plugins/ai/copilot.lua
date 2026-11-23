@@ -48,5 +48,9 @@ require('copilot').setup {
     return true
   end,
   server = { type = 'nodejs', custom_server_filepath = nil },
-  server_opts_overrides = {},
+  -- Don't store the auth key in the macOS keychain: Homebrew node is ad-hoc signed,
+  -- so every node upgrade invalidates the keychain ACL and each nvim pops a prompt.
+  server_opts_overrides = {
+    cmd_env = { GITHUB_COPILOT_AUTH_TOKEN_ENCRYPTION = 'false' },
+  },
 }
